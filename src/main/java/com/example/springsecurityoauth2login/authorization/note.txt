@@ -7,9 +7,10 @@
         - access가 허용되었다면 긍정적 AuthorizationDecision을 리턴
         - 허용이 안된다면 부정적 AuthorizationDecision을 리턴
         - 결정을 내리지 않을 땐 null을 리턴
-    - default AuthorizationDecision verify(Supplier<Authentication> authentication, Object secureObject)
+    - default void verify(Supplier<Authentication> authentication, Object secureObject)
       throws AccessDeniedException { ... }
-        - check을 호출하고 만약 null이나 부정적 AuthorizationDecision이라면 AccessDeniedException을 던진다.
+        - check을 호출하고 만약 부정적 AuthorizationDecision이라면 AccessDeniedException을 던진다.
+        - 그 외의 경우엔 아무것도 리턴하지도 던지지도 않는다. --> 인가 성공을 의미
 
 - 구현체
     - RequestMatcherDelegatingAuthorizationManager
@@ -24,3 +25,4 @@
     또한 커스텀 Authorization Manager 를 생성할 수도 있다.
 
 **** AuthorizationFilter ****
+- AuthorizationManager 를 이용하여 URL 에 대한 접근을 제한하는 필터
