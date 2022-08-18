@@ -1,5 +1,6 @@
 AuthenticationManager
 - Spring Security의 Filter들이 authentication을 어떻게 수행해야 하는지 정의한 API이다.
+- 전달된 Authentication 인스턴스의 인증을 시도하고, 인증이 성공하면 Authentication 인스턴스 내부 프로퍼티를 채워준다. (GrantedAuthority 리스트 등)
 - 리턴된 Authentication 인스턴스는 AuthenticationManager를 호출한 컨트롤러에(i.e. Spring Security's Filters)
   의해 SecurityContextHolder에 세팅된다.
 - 만약 Spring Security's Filters 를 사용하지 않는다면 SecurityContextHolder를 직접 조작하여 세팅할 수 있으며
